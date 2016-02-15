@@ -2,10 +2,9 @@
 
 /**
  * Class definition for the core IWL class
- * @todo Settings page -- include API client ID (and remove the CLIENT_ID constant)
- *                        and checkboxes for the allowed post type(s)
  * @todo List of all IWL authors w/links to the respective posts (shortcode?)
  * @todo Disable IWL on specific pages/posts (checkbox)
+ * @todo More & better i18n  
  */
 class IWL {
 
