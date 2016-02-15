@@ -6,3 +6,7 @@ div.iwl-author {
 	padding: 0.5em;
 	font-style: italic;
 }
+
+div.iwl-author a {
+	color: #369;
+}
