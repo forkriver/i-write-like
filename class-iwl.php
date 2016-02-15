@@ -78,7 +78,7 @@ class IWL {
 		if( is_object( $iwl ) ) {
 			$content = '<div class="iwl-author">
 			<a href="https://iwl.me/" title="I Write Like...">IWL.me</a> thinks this sounds like the
-			writing of <a href="' . $iwl->share_link . '">' . $iwl->writer . '</a>. [<a href="' . $iwl->writer_link . '">Amazon</a>]</div>' . PHP_EOL 
+			writing of <a href="' . $iwl->share_link . '">' . $iwl->writer . '</a>. [<a href="' . $iwl->writer_link . '">Amazon</a>]</div>' . PHP_EOL . '<hr />' . PHP_EOL  
 			. $content;
 		}
 		return $content;
