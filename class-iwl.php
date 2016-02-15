@@ -10,7 +10,6 @@
 class IWL {
 
 	const PREFIX = '_pj_iwl_';
-	const CLIENT_ID = 3;
 	const IWL_URL = 'https://iwl.me/api';
 
 	/**
@@ -69,6 +68,13 @@ class IWL {
 		 */
 		global $post;
 		$single = true;
+		$iwl_settings = get_option( self::PREFIX . 'settings', false );
+		if( false === $iwl_settings ||
+			! isset( $iwl_settings['iwl_on_' . $post->post_type ] ) ||
+			1 != $iwl_settings['iwl_on_' . $post->post_type ] ) {
+			// if we're not using IWL on this type of post, return the $content
+			return $content;
+		}
 		$iwl= get_post_meta( $post->ID, self::PREFIX . 'data', $single );
 		if( is_object( $iwl ) ) {
 			$content = '<div class="iwl-author">
@@ -86,10 +92,23 @@ class IWL {
 	 * @return object (IWL)
 	 */
 	function refresh_iwl_author( $post_id, $post ) {
-		$iwl_client_id = get_option( self::PREFIX . 'client_id', false );
+		$iwl_settings = get_option( self::PREFIX . 'settings', false );
+		if( false === $iwl_settings ) {
+			// Don't proceed if there are no settings
+			return false;
+		}
+		// Check to see if IWL is turned on for the current post type
+		if( ! isset( $iwl_settings['iwl_on_' . $post->post_type ] )
+			|| 1 != (bool) $iwl_settings['iwl_on_' . $post->post_type ] ) {
+			return false;
+		}
+		$iwl_client_id = false;
+		if( is_array( $iwl_settings ) && isset( $iwl_settings['iwl_client_id'] ) ) {
+			$iwl_client_id = $iwl_settings['iwl_client_id'];
+		}
 		if( false === $iwl_client_id ) {
-			// use the default
-			$iwl_client_id = self::CLIENT_ID;
+			// Don't proceed if the Client ID isn't set
+			return false;
 		}
 		$post_data = array(
 			'text' => strip_tags( $post->post_content ),

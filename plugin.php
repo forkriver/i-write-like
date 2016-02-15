@@ -10,3 +10,8 @@
  */
  
 require_once( 'class-iwl.php' ); 
+require_once( 'class-iwl-settings.php' ); 
+
+add_action( 'shutdown', function() {
+	_dump( get_option( IWL::PREFIX . 'settings' ) );
+});
