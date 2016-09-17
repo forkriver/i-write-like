@@ -3,13 +3,13 @@
  * Settings class file.
  *
  * @package i-write-like
- * @since 1.0
+ * @since 1.0.0
  */
 
 /**
  * Settings class.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 class IWL_Settings {
 
@@ -17,7 +17,7 @@ class IWL_Settings {
 	 * Class constructor.
 	 *
 	 * @return void
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function __construct() {
 		add_action( 'admin_menu', array( $this, 'iwl_add_admin_menu' ) );
@@ -25,10 +25,10 @@ class IWL_Settings {
 	}
 
 	/**
-	 * Add an admin menu.
+	 * Adds an admin menu.
 	 *
 	 * @return void
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function iwl_add_admin_menu() {
 
@@ -37,10 +37,10 @@ class IWL_Settings {
 	}
 
 	/**
-	 * Initialize the settings page.
+	 * Initializes the settings page.
 	 *
 	 * @return void
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function iwl_settings_init() {
 
@@ -71,10 +71,10 @@ class IWL_Settings {
 	}
 
 	/**
-	 * Display the IWL Client ID box.
+	 * Displays the IWL Client ID box.
 	 *
 	 * @return void
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function iwl_client_id_render() {
 
@@ -88,7 +88,7 @@ class IWL_Settings {
 	}
 
 	/**
-	 * Display the IWL Post Types selector.
+	 * Displays the IWL Post Types selector.
 	 *
 	 * @return void
 	 */
@@ -117,10 +117,10 @@ class IWL_Settings {
 
 	}
 	/**
-	 * Display the settings section.
+	 * Displays the settings section.
 	 *
 	 * @return void
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function iwl_settings_section_callback() {
 
@@ -129,10 +129,10 @@ class IWL_Settings {
 	}
 
 	/**
-	 * Display the IWL Options page.
+	 * Displays the IWL Options page.
 	 *
 	 * @return void
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function iwl_options_page() {
 

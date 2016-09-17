@@ -3,13 +3,13 @@
  * Core IWL class file.
  *
  * @package i-write-like
- * @since 1.0
+ * @since 1.0.0
  */
 
 /**
  * Class definition for the core IWL class.
  *
- * @since 1.0
+ * @since 1.0.0
  *
  * @todo List of all IWL authors w/links to the respective posts (shortcode?)
  * @todo Disable IWL on specific pages/posts (checkbox)
@@ -20,14 +20,14 @@ class IWL {
 	/**
 	 * Prefix for use on options and elsewhere.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const PREFIX = '_pj_iwl_';
 
 	/**
 	 * URL for the I Write Like API.
 	 *
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	const IWL_URL = 'https://iwl.me/api';
 
@@ -35,7 +35,7 @@ class IWL {
 	 * Constructor for the core IWL class.
 	 *
 	 * @return void
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function __construct() {
 		add_action( 'save_post', array( $this, 'get_iwl_author' ), 10, 3 );
@@ -45,7 +45,7 @@ class IWL {
 
 	}
 	/**
-	 * Get the IWL author information.
+	 * Gets the IWL author information.
 	 *
 	 * @param int     $post_id The post ID.
 	 * @param WP_Post $post The post object.
@@ -74,10 +74,10 @@ class IWL {
 	}
 
 	/**
-	 * Register and enqueue the required stylesheet.
+	 * Registers and enqueues the required stylesheet.
 	 *
 	 * @return void
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function iwl_styles() {
 		$handle = 'iwl';
@@ -87,11 +87,12 @@ class IWL {
 	}
 
 	/**
-	 * Filter the post content to add the IWL author section to the top.
+	 * Filters the post content to add the IWL author section to the top.
 	 *
 	 * @param string $content The content to filter.
+	 * @global WP_Post $post The current post object.
 	 * @return string The filtered content.
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function display_iwl_author( $content ) {
 		global $post;
@@ -116,12 +117,12 @@ class IWL {
 	}
 
 	/**
-	 * Fetch IWL data for the current post's content from the IWL API
+	 * Fetches IWL data for the current post's content from the IWL API.
 	 *
 	 * @param int     $post_id The post ID.
 	 * @param WP_Post $post The post object.
 	 * @return object (IWL)
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	function refresh_iwl_author( $post_id, $post ) {
 		$iwl_settings = get_option( self::PREFIX . 'settings', false );
